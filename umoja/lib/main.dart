@@ -5,10 +5,16 @@ import 'screens/onboarding/onboarding.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Onboarding Concept Static',
-      home: Onboarding(),
+      title: 'Umoja',
+      home: Builder(
+        builder: (BuildContext context) {
+          final screenHeight = MediaQuery.of(context).size.height;
+
+          return Onboarding(screenHeight: screenHeight);
+        },
+      ),
     );
   }
 }

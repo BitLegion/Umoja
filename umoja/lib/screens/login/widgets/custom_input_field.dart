@@ -26,12 +26,12 @@ class CustomInputField extends StatelessWidget {
         ),
         hintText: label,
         hintStyle: TextStyle(
-          color: kBlack.withOpacity(0.5),
+          color: kBlackPurple.withOpacity(0.5),
           fontWeight: FontWeight.w500,
         ),
         prefixIcon: Icon(
           prefixIcon,
-          color: kBlack.withOpacity(0.5),
+          color: kBlackPurple.withOpacity(0.5),
         ),
       ),
       obscureText: obscureText,

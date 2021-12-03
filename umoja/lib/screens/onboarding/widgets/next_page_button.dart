@@ -19,7 +19,7 @@ class NextPageButton extends StatelessWidget {
       onPressed: onPressed,
       child: const Icon(
         Icons.arrow_forward,
-        color: kBlue,
+        color: kPurple,
         size: 32.0,
       ),
     );

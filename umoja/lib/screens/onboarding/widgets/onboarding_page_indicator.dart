@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 
 class OnboardingPageIndicator extends StatelessWidget {
+  final double angle;
   final int currentPage;
   final Widget child;
 
   const OnboardingPageIndicator({
+    required this.angle,
     required this.currentPage,
     required this.child,
   });
@@ -23,22 +25,24 @@ class OnboardingPageIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _OnboardingPageIndicatorPainter(
+      painter: _OnboardignPageIndicatorPainter(
         color: _getPageIndicatorColor(0),
-        startAngle: (4 * indicatorLength) - (indicatorLength + indicatorGap),
+        startAngle:
+            (4 * indicatorLength) - (indicatorLength + indicatorGap) + angle,
         indicatorLength: indicatorLength,
       ),
       child: CustomPaint(
-        painter: _OnboardingPageIndicatorPainter(
+        painter: _OnboardignPageIndicatorPainter(
           color: _getPageIndicatorColor(1),
-          startAngle: 4 * indicatorLength,
+          startAngle: 4 * indicatorLength + angle,
           indicatorLength: indicatorLength,
         ),
         child: CustomPaint(
-          painter: _OnboardingPageIndicatorPainter(
+          painter: _OnboardignPageIndicatorPainter(
             color: _getPageIndicatorColor(2),
-            startAngle:
-                (4 * indicatorLength) + (indicatorLength + indicatorGap),
+            startAngle: (4 * indicatorLength) +
+                (indicatorLength + indicatorGap) +
+                angle,
             indicatorLength: indicatorLength,
           ),
           child: child,
@@ -48,12 +52,12 @@ class OnboardingPageIndicator extends StatelessWidget {
   }
 }
 
-class _OnboardingPageIndicatorPainter extends CustomPainter {
+class _OnboardignPageIndicatorPainter extends CustomPainter {
   final Color color;
   final double startAngle;
   final double indicatorLength;
 
-  const _OnboardingPageIndicatorPainter({
+  const _OnboardignPageIndicatorPainter({
     required this.color,
     required this.startAngle,
     required this.indicatorLength,
@@ -79,7 +83,7 @@ class _OnboardingPageIndicatorPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_OnboardingPageIndicatorPainter oldDelegate) {
+  bool shouldRepaint(_OnboardignPageIndicatorPainter oldDelegate) {
     return color != oldDelegate.color || startAngle != oldDelegate.startAngle;
   }
 }

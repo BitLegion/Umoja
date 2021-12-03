@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 import '../../../widgets/logo.dart';
+import 'fade_slide_transition.dart';
 
 class Header extends StatelessWidget {
-  const Header();
+  final Animation<double> animation;
+
+  const Header({
+    required this.animation,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,22 +19,32 @@ class Header extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           const Logo(
-            color: kBlue,
+            color: kPurple,
             size: 48.0,
           ),
           const SizedBox(height: kSpaceM),
-          Text(
-            'Welcome to Umoja',
-            style: Theme.of(context).textTheme.headline5!.copyWith(
-                color: kBlue.withOpacity(1.0), fontWeight: FontWeight.bold),
+          FadeSlideTransition(
+            animation: animation,
+            additionalOffset: 0.0,
+            child: Text(
+              'Welcome to Umoja',
+              style: Theme.of(context)
+                  .textTheme
+                  .headline5!
+                  .copyWith(color: kBlackPurple, fontWeight: FontWeight.bold),
+            ),
           ),
           const SizedBox(height: kSpaceS),
-          Text(
-            'Est ad dolor aute ex commodo tempor exercitation proident.',
-            style: Theme.of(context)
-                .textTheme
-                .subtitle1!
-                .copyWith(color: kBlack.withOpacity(0.5)),
+          FadeSlideTransition(
+            animation: animation,
+            additionalOffset: 16.0,
+            child: Text(
+              'Est ad dolor aute ex commodo tempor exercitation proident.',
+              style: Theme.of(context)
+                  .textTheme
+                  .subtitle1!
+                  .copyWith(color: kBlackPurple.withOpacity(0.5)),
+            ),
           ),
         ],
       ),
